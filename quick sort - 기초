@@ -1,0 +1,46 @@
+#include<stdio.h>
+
+int number = 7;
+int data[7] = { 20,10,30,70,50,40,90 };
+
+void swap(int* w, int* e) {
+	int temp;
+	temp = *e;
+	*e = *w;
+	*w = temp;
+
+}
+
+
+int pas(int data[], int l, int r) {
+	int pivet = data[r];
+	int q = (l - 1);
+	for (int j = l; j <= r - 1; j++) {
+		if (data[j] <= pivet) {
+			q++;
+			swap(&data[q], &data[j]);
+		}
+	}
+	q++;
+	swap(&data[q],&data[r]);
+	return q;
+
+}
+
+void quickSort(int data[], int l, int r) {
+	if (l < r) {
+		
+		int p = pas(data,l,r);
+			
+		quickSort(data,l, p-1);
+		quickSort(data,p+1, r);
+	}
+}
+
+int main() {
+	quickSort(data, 0, number - 1);
+	for (int i = 0; i < number; i++) {
+		printf("%d ", data[i]);
+	}
+	return 0;
+}
