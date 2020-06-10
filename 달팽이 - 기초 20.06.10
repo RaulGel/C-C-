@@ -1,0 +1,66 @@
+#include<stdio.h>
+
+int main() {
+
+	int array[5][5];
+	int line;
+	line = 5;
+	int j = 0;
+	int t = 1;
+	int index=1;
+		
+	
+		for (int i = 3; j < i; j++) {
+			int x = j;
+			int y = j;
+			if (j!=2) {
+				while (x <= line - index) {
+					array[j][x] = t;
+						if (x < line - index) {
+							t++;
+							x++;
+						}
+						else {
+							break;
+						}
+				}
+
+				while (y <= line - index) {
+					array[y][x] = t;
+						if (y < line - index) {
+							t++;
+							y++;
+						}
+						else {
+							break;
+						}
+				}
+
+				while (x != j) {
+					array[y][x] = t;
+						t++;
+						x--;
+				}
+
+				array[y][x] = t;
+
+				while (y >= j+1) {
+					array[y][x] = t;
+					t++;
+					y--;
+				}
+				index++;
+			}
+			else {
+				array[y][x] = t;
+			}
+		}
+	
+		int k = 0; int p = 0;
+
+		while (k < 5) {
+			printf("%d %d %d %d %d\n", array[k][0], array[k][1], array[k][2], array[k][3], array[k][4]);
+			k++;
+		}
+	return 0;
+}
